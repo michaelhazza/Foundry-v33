@@ -1,0 +1,14 @@
+modules = ["nodejs-20"]
+hidden = [".config", "package-lock.json"]
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm run start"]
+deploymentTarget = "cloudrun"
+ignorePorts = false
+
+[[ports]]
+localPort = 5000
+externalPort = 80
