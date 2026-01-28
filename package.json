@@ -1,0 +1,49 @@
+{
+  "name": "foundry",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"PORT=3001 tsx watch server/index.ts\" \"cd client && npx vite\"",
+    "dev:server": "PORT=3001 tsx watch server/index.ts",
+    "dev:client": "cd client && npx vite",
+    "build": "cd client && npm run build && cd .. && tsc -p server/tsconfig.json",
+    "start": "NODE_ENV=production node dist/server/index.js",
+    "db:generate": "drizzle-kit generate --force",
+    "db:push": "drizzle-kit push --force",
+    "db:migrate": "tsx server/db/migrate.ts",
+    "db:seed": "tsx server/db/seed-admin.ts",
+    "typecheck": "tsc --noEmit && cd client && tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "drizzle-orm": "^0.29.3",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.22.4",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^7.1.5",
+    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "node-cron": "^3.0.3",
+    "papaparse": "^5.4.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/express": "^4.17.21",
+    "@types/pg": "^8.10.9",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/cors": "^2.8.17",
+    "@types/multer": "^1.4.11",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0",
+    "drizzle-kit": "^0.20.14",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0"
+  }
+}
